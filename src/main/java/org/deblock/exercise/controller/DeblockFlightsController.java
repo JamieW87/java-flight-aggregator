@@ -18,7 +18,7 @@ public class DeblockFlightsController {
     private SupplierService supplierService;
 
     @PostMapping
-    public DeblockResponse fetchRecords(@RequestBody @Valid DeblockRequest deblockRequest) {
+    public DeblockResponse fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
 
     }
 }
