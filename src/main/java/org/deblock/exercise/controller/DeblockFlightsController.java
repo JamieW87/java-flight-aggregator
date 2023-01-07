@@ -1,11 +1,10 @@
 package org.deblock.exercise.controller;
 
 
-import org.deblock.exercise.model.DeblockRequest;
-import org.deblock.exercise.model.DeblockResponse;
-import org.deblock.exercise.service.SupplierService;
+import org.deblock.exercise.model.rest.DeblockRequest;
+
 import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +19,7 @@ public class DeblockFlightsController {
     @PostMapping
     public void fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
 
-        System.out.println(deblockRequest);
+        System.out.println(deblockRequest.toString());
 
     }
 }

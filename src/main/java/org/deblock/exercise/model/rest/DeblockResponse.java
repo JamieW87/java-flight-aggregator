@@ -1,4 +1,4 @@
-package org.deblock.exercise.model;
+package org.deblock.exercise.model.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

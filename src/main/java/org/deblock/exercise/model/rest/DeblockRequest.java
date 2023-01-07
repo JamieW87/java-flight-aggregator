@@ -1,4 +1,4 @@
-package org.deblock.exercise.model;
+package org.deblock.exercise.model.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,7 +40,52 @@ public class DeblockRequest {
     @Positive
     private String numberOfPassengers;
 
+    //Validate Departure is before return
+    //TO DO Implement func
+    @AssertTrue public boolean isValidRange() {
+        // TODO: null checks
+        return !departureDate.isBefore(returnDate);
+    }
 
+    @Override
+    public String toString() {
+        return "DeblockRequest{" +
+                "origin=" + origin +
+                ", date='" + departureDate + '\'' +
+                '}';
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public String getNumberOfPassengers() {
+        return numberOfPassengers;
+    }
+
+    public void setNumberOfPassengers(String numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
+    }
 }
 
 
