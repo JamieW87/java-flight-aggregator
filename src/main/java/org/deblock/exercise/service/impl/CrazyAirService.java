@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 public class CrazyAirService implements SupplierService {
 
     @Override
-    public DeblockResponse GetFlightData(DeblockRequest request){
+    public void GetFlightData(DeblockRequest request){
 
         //Transform DRequest to CARequest
         //Send via HTTP to CA
         //Transform response to DResponse
         //Return
+
+        System.out.println("CrazyAir babbbyyy!");
 
     }
 }
