@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping(value = "/flights")
 public class DeblockFlightsController {
-    @Autowired
-    private SupplierService supplierService;
+//    @Autowired
+//    private SupplierService supplierService;
 
     @PostMapping
     public void fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
+
+        System.out.println(deblockRequest);
 
     }
 }
