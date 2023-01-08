@@ -56,10 +56,6 @@ public class ToughJetService implements SupplierService {
             throw new NoDataFoundException();
         }
 
-
-
-        //Status code checks
-        //Null checks
         DeblockResponse dResp = transformer.toDResponse(response.getBody());
 
         //for stubbing
