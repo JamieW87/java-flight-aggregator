@@ -5,47 +5,33 @@ import org.deblock.exercise.model.rest.DeblockRequest;
 
 import javax.validation.Valid;
 
-import org.deblock.exercise.service.SupplierService;
-import org.deblock.exercise.service.impl.CrazyAirService;
+import org.deblock.exercise.model.rest.DeblockResponse;
+import org.deblock.exercise.service.DeblocksFlightsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping(value = "/flights")
 public class DeblockFlightsController {
 
-    private final SupplierService CAService;
-    private final SupplierService TJService;
-
     @Autowired
-    public DeblockFlightsController(@Qualifier("crazyair") SupplierService CAservice,
-                                    @Qualifier("toughjet") SupplierService TJService) {
-        this.CAService = CAservice;
-        this.TJService = TJService;
-    }
-
+    private DeblocksFlightsService service;
 
     @PostMapping
     public void fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
 
-        // Instantiate new array of deblock response
+        DeblockResponse[] response = service.FetchFlightData(deblockRequest);
 
-        //-Parallelize these
-        CAService.GetFlightData(deblockRequest);
-        TJService.GetFlightData(deblockRequest);
+        //Handle Errors
+        //Return response
 
-        //Services return DeblockResponse
-        //Append returns to deblockResponseArray
-        //Return array
 
-        System.out.println(deblockRequest.toString());
+        System.out.println(Arrays.toString(response));
 
 
 

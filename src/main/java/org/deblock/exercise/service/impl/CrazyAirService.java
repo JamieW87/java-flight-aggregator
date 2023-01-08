@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class CrazyAirService implements SupplierService {
 
     @Override
-    public void GetFlightData(DeblockRequest request){
+    public DeblockResponse GetFlightData(DeblockRequest request){
 
         //Transform DRequest to CARequest
         //Send via HTTP to CA
