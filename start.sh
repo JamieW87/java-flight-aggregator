@@ -1,5 +1,5 @@
 #Build
-
+./gradlew build
 #Clean
 
 #Unit test

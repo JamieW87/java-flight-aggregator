@@ -9,41 +9,39 @@ import java.time.LocalDate;
 public class DeblockRequest {
 
     private static final int MAX_FIELD_LENGTH = 3;
-    public static final int MAX_VALUE = 4;
+    private static final int MAX_VALUE = 4;
 
-    @NotBlank(message = "Must supply an origin")
+    @NotBlank(message = "origin_missing")
     @JsonProperty("origin")
-    @Size(max = MAX_FIELD_LENGTH)
+    @Size(max = MAX_FIELD_LENGTH, message = "origin_max_field_length_exceeded")
     private String origin;
 
-    @NotBlank(message = "Must supply your destination")
+    @NotBlank(message = "destination_missing")
     @JsonProperty("destination")
-    @Size(max = MAX_FIELD_LENGTH)
+    @Size(max = MAX_FIELD_LENGTH, message = "destination_max_field_length_exceeded")
     private String destination;
 
-    @NotNull
+    @NotNull(message = "departure_date_missing")
     @JsonProperty("departureDate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Future
+    @Future(message = "departure_date_must_be_in_future")
     private LocalDate departureDate;
 
-    @NotNull
+    @NotNull(message = "return_date_missing")
     @JsonProperty("returnDate")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Future
+    @Future(message = "return_date_must_be_in_future")
     private LocalDate returnDate;
 
-    @NotBlank
+    @NotNull(message = "numberOfPassengers_missing")
     @JsonProperty("numberOfPassengers")
-    @Size(max = MAX_FIELD_LENGTH)
-    @Max(message = "Can only book for up to 4 passengers", value = MAX_VALUE)
+    @Max(message = "numberOfPassengers_exceeded_max", value = MAX_VALUE)
     @Positive
-    private String numberOfPassengers;
+    private Integer numberOfPassengers;
 
     //Validate Departure is before return
-    //TO DO Implement func
-    @AssertTrue public boolean isValidRange() {
-        // TODO: null checks
+    @AssertTrue(message = "departure_date_after_return_date")
+    public boolean isValidRange() {
         return !departureDate.isBefore(returnDate);
     }
 
@@ -79,21 +77,19 @@ public class DeblockRequest {
         this.returnDate = returnDate;
     }
 
-    public String getNumberOfPassengers() {
+    public LocalDate getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public Integer getNumberOfPassengers() {
         return numberOfPassengers;
     }
 
-    public void setNumberOfPassengers(String numberOfPassengers) {
+    public void setNumberOfPassengers(Integer numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
     }
 }
-
-
-
-//| Name | Description |
-//        | ------ | ------ |
-//        | origin | 3 letter IATA code(eg. LHR, AMS) |
-//        | destination | 3 letter IATA code(eg. LHR, AMS) |
-//        | departureDate | ISO_LOCAL_DATE format |
-//        | returnDate | ISO_LOCAL_DATE format |
-//        | numberOfPassengers | Maximum 4 passengers |
