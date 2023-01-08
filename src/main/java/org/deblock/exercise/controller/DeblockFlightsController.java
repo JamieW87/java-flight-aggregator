@@ -8,10 +8,8 @@ import javax.validation.Valid;
 import org.deblock.exercise.model.rest.DeblockResponse;
 import org.deblock.exercise.service.DeblocksFlightsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 
@@ -23,17 +21,14 @@ public class DeblockFlightsController {
     private DeblocksFlightsService service;
 
     @PostMapping
-    public void fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
+    public ResponseEntity fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
 
         DeblockResponse[] response = service.FetchFlightData(deblockRequest);
 
-        //Handle Errors
-        //Return response
-
-
+        //Remove this
         System.out.println(Arrays.toString(response));
 
-
+        return ResponseEntity.ok(response);
 
     }
 }
