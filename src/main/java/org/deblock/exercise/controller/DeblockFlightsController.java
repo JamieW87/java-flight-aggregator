@@ -1,6 +1,8 @@
 package org.deblock.exercise.controller;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.deblock.exercise.model.rest.DeblockRequest;
 
 import javax.validation.Valid;
@@ -17,17 +19,19 @@ import java.util.Arrays;
 @RequestMapping(value = "/flights")
 public class DeblockFlightsController {
 
+    private static final Logger logger = LogManager.getLogger(DeblockFlightsController.class);
+
     @Autowired
     private DeblocksFlightsService service;
 
     @PostMapping
     public ResponseEntity fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
+        logger.info("Request received");
 
+        logger.debug(String.format("Passing request to suppliers: %s", deblockRequest.toString()));
         DeblockResponse[] response = service.FetchFlightData(deblockRequest);
 
-        //Remove this
-        System.out.println(Arrays.toString(response));
-
+        logger.info("Successfully processed request, returning response");
         return ResponseEntity.ok(response);
 
     }
