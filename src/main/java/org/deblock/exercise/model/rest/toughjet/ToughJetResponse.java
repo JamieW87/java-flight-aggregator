@@ -8,26 +8,90 @@ import java.time.LocalDate;
 public class ToughJetResponse {
 
     @JsonProperty("carrier")
-    public String carrier;
+    private String carrier;
 
     @JsonProperty("basePrice")
-    public Float basePrice;
+    private Float basePrice;
 
     @JsonProperty("tax")
-    public Float tax;
+    private Float tax;
 
     @JsonProperty("discount")
-    public Integer discount;
+    private Integer discount;
 
     @JsonProperty("departureAirportName")
-    public String departureAirportCode;
+    private String departureAirportCode;
 
     @JsonProperty("arrivalAirportName")
-    public String destinationAirportCode;
+    private String destinationAirportCode;
 
     @JsonProperty("outboundDateTime")
-    public Instant outboundDateTime;
+    private Instant outboundDateTime;
 
     @JsonProperty("inboundDateTime")
-    public Instant inboundDateTime;
+    private Instant inboundDateTime;
+
+    public String getCarrier() {
+        return carrier;
+    }
+
+    public void setCarrier(String carrier) {
+        this.carrier = carrier;
+    }
+
+    public Float getBasePrice() {
+        return basePrice;
+    }
+
+    public void setBasePrice(Float basePrice) {
+        this.basePrice = basePrice;
+    }
+
+    public Float getTax() {
+        return tax;
+    }
+
+    public void setTax(Float tax) {
+        this.tax = tax;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    public String getDepartureAirportCode() {
+        return departureAirportCode;
+    }
+
+    public void setDepartureAirportCode(String departureAirportCode) {
+        this.departureAirportCode = departureAirportCode;
+    }
+
+    public String getDestinationAirportCode() {
+        return destinationAirportCode;
+    }
+
+    public void setDestinationAirportCode(String destinationAirportCode) {
+        this.destinationAirportCode = destinationAirportCode;
+    }
+
+    public Instant getOutboundDateTime() {
+        return outboundDateTime;
+    }
+
+    public void setOutboundDateTime(Instant outboundDateTime) {
+        this.outboundDateTime = outboundDateTime;
+    }
+
+    public Instant getInboundDateTime() {
+        return inboundDateTime;
+    }
+
+    public void setInboundDateTime(Instant inboundDateTime) {
+        this.inboundDateTime = inboundDateTime;
+    }
 }

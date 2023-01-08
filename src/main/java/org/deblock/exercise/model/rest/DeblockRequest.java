@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class DeblockRequest {
 
     private static final int MAX_FIELD_LENGTH = 3;
-    public static final int MAX_VALUE = 4;
+    private static final int MAX_VALUE = 4;
 
     @NotBlank(message = "Must supply an origin")
     @JsonProperty("origin")
@@ -33,12 +33,11 @@ public class DeblockRequest {
     @Future
     private LocalDate returnDate;
 
-    @NotBlank
+    @NotNull
     @JsonProperty("numberOfPassengers")
-    @Size(max = MAX_FIELD_LENGTH)
     @Max(message = "Can only book for up to 4 passengers", value = MAX_VALUE)
     @Positive
-    private String numberOfPassengers;
+    private Integer numberOfPassengers;
 
     //Validate Departure is before return
     //TO DO Implement func
@@ -79,21 +78,19 @@ public class DeblockRequest {
         this.returnDate = returnDate;
     }
 
-    public String getNumberOfPassengers() {
+    public LocalDate getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public Integer getNumberOfPassengers() {
         return numberOfPassengers;
     }
 
-    public void setNumberOfPassengers(String numberOfPassengers) {
+    public void setNumberOfPassengers(Integer numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
     }
 }
-
-
-
-//| Name | Description |
-//        | ------ | ------ |
-//        | origin | 3 letter IATA code(eg. LHR, AMS) |
-//        | destination | 3 letter IATA code(eg. LHR, AMS) |
-//        | departureDate | ISO_LOCAL_DATE format |
-//        | returnDate | ISO_LOCAL_DATE format |
-//        | numberOfPassengers | Maximum 4 passengers |

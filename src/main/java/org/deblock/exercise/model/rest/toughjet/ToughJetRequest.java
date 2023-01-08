@@ -7,19 +7,19 @@ import java.time.LocalDate;
 public class ToughJetRequest {
 
     @JsonProperty("from")
-    public String from;
+    private String from;
 
     @JsonProperty("to")
-    public String to;
+    private String to;
 
     @JsonProperty("outboundDate")
-    public LocalDate outboundDate;
+    private LocalDate outboundDate;
 
     @JsonProperty("inboundDate")
-    public LocalDate inboundDate;
+    private LocalDate inboundDate;
 
     @JsonProperty("numberOfAdults")
-    public Integer numberOfAdults;
+    private Integer numberOfAdults;
 
     public String getFrom() {
         return from;
@@ -59,5 +59,16 @@ public class ToughJetRequest {
 
     public void setNumberOfAdults(Integer numberOfAdults) {
         this.numberOfAdults = numberOfAdults;
+    }
+
+    @Override
+    public String toString() {
+        return "ToughJetRequest{" +
+                "from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", outboundDate=" + outboundDate +
+                ", inboundDate=" + inboundDate +
+                ", numberOfAdults=" + numberOfAdults +
+                '}';
     }
 }
