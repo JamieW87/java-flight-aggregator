@@ -25,7 +25,6 @@ public class ToughJetService implements SupplierService {
     @Override
     public DeblockResponse GetFlightData(DeblockRequest dRequest){
 
-        //Transform DRequest to CARequest
         ToughJetRequest req = transformer.toTJRequest(dRequest);
         System.out.println(req.toString());
 
