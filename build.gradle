@@ -43,3 +43,13 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+task integration(type: Test) {
+	filter { includes = ["INTEGRATION"] }
+	useJUnitPlatform()
+}
+
+task unit(type: Test) {
+	filter { includes = ["UNIT"] }
+	useJUnitPlatform()
+}

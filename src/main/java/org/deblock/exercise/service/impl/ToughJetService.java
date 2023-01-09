@@ -56,9 +56,7 @@ public class ToughJetService implements SupplierService {
             throw new NoDataFoundException();
         }
 
-        DeblockResponse dResp = transformer.toDResponse(response.getBody());
-
-        return dResp;
+        return transformer.toDResponse(response.getBody());
 
     }
 }

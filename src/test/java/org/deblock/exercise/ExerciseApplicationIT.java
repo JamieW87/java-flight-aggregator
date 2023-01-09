@@ -22,6 +22,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @WireMockTest(httpPort = 8089)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Tag("INTEGRATION")
 public class ExerciseApplicationIT {
 
     String mockTJReq = "{\n" +
@@ -107,9 +108,10 @@ public class ExerciseApplicationIT {
         assertThat(response.hasBody());
         assertThat(arrResp[1]).hasFieldOrProperty("airline");
         assertThat(arrResp[0]).hasFieldOrProperty("supplier");
+        assertThat(arrResp[0].getFare()).isEqualTo(300.00f);
         assertThat(arrResp[0].getAirline()).isEqualTo("VirginAir");
         assertThat(arrResp.length).isEqualTo(2);
         assertThat(arrResp[0]).hasNoNullFieldsOrProperties();
-        
+
     }
 }

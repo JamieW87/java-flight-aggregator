@@ -1,7 +1,7 @@
 {
   "carrier":"VirginAir",
-  "basePrice": 236.24,
-  "tax": 25.60,
+  "basePrice": 270.00,
+  "tax": 30.00,
   "discount": 10,
   "departureAirportName": "LHR",
   "arrivalAirportName": "MIA",

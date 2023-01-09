@@ -7,6 +7,7 @@ import org.deblock.exercise.model.rest.DeblockResponse;
 import org.deblock.exercise.model.rest.crazyair.CrazyAirRequest;
 import org.deblock.exercise.model.rest.crazyair.CrazyAirResponse;
 import org.deblock.exercise.transformer.crazyair.CrazyAirTransformer;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,6 +28,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@Tag("UNIT")
 public class CrazyAirServiceTest {
 
     @Mock
