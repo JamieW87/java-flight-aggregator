@@ -1,0 +1,7 @@
+{
+  "origin":"LHR",
+  "destination": "MIA",
+  "departureDate": "2024-11-12",
+  "returnDate": "2023-12-01",
+  "numberOfPassengers":3
+}
