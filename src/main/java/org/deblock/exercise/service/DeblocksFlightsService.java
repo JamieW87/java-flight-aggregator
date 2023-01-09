@@ -28,9 +28,6 @@ public class DeblocksFlightsService {
             responseList.add(resp);
         });
 
-
-
         return responseList.toArray(new DeblockResponse[responseList.size()]);
-
     }
 }
