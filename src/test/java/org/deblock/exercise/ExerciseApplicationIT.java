@@ -7,6 +7,7 @@ import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemp
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.deblock.exercise.controller.DeblockFlightsController;
 import org.deblock.exercise.model.rest.DeblockRequest;
+import org.deblock.exercise.model.rest.DeblockResponse;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -99,11 +100,15 @@ public class ExerciseApplicationIT {
                                 .withBodyFile("mock-api/crazyairResponse.json"))
         );
 
-        ResponseEntity response = controller.fetchFlights(debReq);
+        ResponseEntity<DeblockResponse[]> response = controller.fetchFlights(debReq);
+        DeblockResponse[] arrResp = response.getBody();
 
-        assertThat(response).isNotNull();
         assertThat(response.getStatusCode().is2xxSuccessful());
         assertThat(response.hasBody());
+        assertThat(arrResp[0]).hasFieldOrProperty("airline");
+        assertThat(arrResp[0].getAirline()).isEqualTo("VirginAir");
+
+
 
 //        assertThat(response.getData().getUuid()).isNotNull();
 //        assertThat(response.getData().getCreationDate()).isNotNull();

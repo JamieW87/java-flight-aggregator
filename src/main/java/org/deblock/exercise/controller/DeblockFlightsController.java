@@ -22,7 +22,7 @@ public class DeblockFlightsController {
     private DeblocksFlightsService service;
 
     @PostMapping
-    public ResponseEntity fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
+    public ResponseEntity<DeblockResponse[]> fetchFlights(@RequestBody @Valid DeblockRequest deblockRequest) {
         logger.info("Request received");
 
         logger.debug(String.format("Passing request to suppliers: %s", deblockRequest.toString()));
