@@ -110,12 +110,6 @@ public class ExerciseApplicationIT {
         assertThat(arrResp[0].getAirline()).isEqualTo("VirginAir");
         assertThat(arrResp.length).isEqualTo(2);
         assertThat(arrResp[0]).hasNoNullFieldsOrProperties();
-
-
-
-//        assertThat(response.getData().getUuid()).isNotNull();
-//        assertThat(response.getData().getCreationDate()).isNotNull();
-//        assertThat(response.getData().getFirstName()).isNotNull();
-//        assertThat(response.getData().getLastName()).isNotNull();
+        
     }
 }
