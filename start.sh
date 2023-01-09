@@ -1,10 +1,12 @@
 #Build
+echo "---Building---"
 ./gradlew build
-#Clean
-
 #Unit test
-./gradlew test
+echo "---Running unit tests---"
+./gradlew unit
 #Integration test
+echo "---Running integration test---"
+./gradlew integration
 
-#Run
+echo "---Running application---"
 ./gradlew run

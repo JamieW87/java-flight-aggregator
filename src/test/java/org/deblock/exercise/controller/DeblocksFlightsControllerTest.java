@@ -3,6 +3,7 @@ package org.deblock.exercise.controller;
 import org.deblock.exercise.model.rest.DeblockRequest;
 import org.deblock.exercise.model.rest.DeblockResponse;
 import org.deblock.exercise.service.DeblocksFlightsService;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@Tag("UNIT")
 public class DeblocksFlightsControllerTest {
 
     @Mock

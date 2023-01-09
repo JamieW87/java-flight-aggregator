@@ -31,37 +31,32 @@ public class ToughJetService implements SupplierService {
     @Override
     public DeblockResponse GetFlightData(DeblockRequest dRequest){
 
-//        ToughJetRequest req = transformer.toTJRequest(dRequest);
-//
-//        //Remove these
-//        System.out.println(req.toString());
-//        System.out.println(toughjetUrl);
-//
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-//
-//        HttpEntity<ToughJetRequest> request = new HttpEntity<>(req, headers);
-//
-//        ResponseEntity<ToughJetResponse> response = restTemplate.exchange(
-//                toughjetUrl + "/api/flights",
-//                HttpMethod.POST,
-//                request,
-//                ToughJetResponse.class
-//        );
-//        if (response.getStatusCode() != HttpStatus.OK)  {
-//            throw new ClientErrorException();
-//        }
-//        if (response.getBody() == null) {
-//            throw new NoDataFoundException();
-//        }
-//
-//        DeblockResponse dResp = transformer.toDResponse(response.getBody());
+        ToughJetRequest req = transformer.toTJRequest(dRequest);
 
-        //for stubbing
-        DeblockResponse dResp = new DeblockResponse();
+        //Remove these
+        System.out.println(req.toString());
+        System.out.println(toughjetUrl);
 
-        return dResp;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<ToughJetRequest> request = new HttpEntity<>(req, headers);
+
+        ResponseEntity<ToughJetResponse> response = restTemplate.exchange(
+                toughjetUrl + "/api/flights",
+                HttpMethod.POST,
+                request,
+                ToughJetResponse.class
+        );
+        if (response.getStatusCode() != HttpStatus.OK)  {
+            throw new ClientErrorException();
+        }
+        if (response.getBody() == null) {
+            throw new NoDataFoundException();
+        }
+
+        return transformer.toDResponse(response.getBody());
 
     }
 }

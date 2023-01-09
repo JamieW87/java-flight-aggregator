@@ -3,7 +3,6 @@ package org.deblock.exercise.model.rest.toughjet;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Instant;
-import java.time.LocalDate;
 
 public class ToughJetResponse {
 

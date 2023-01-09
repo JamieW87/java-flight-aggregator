@@ -1,0 +1,10 @@
+{
+  "carrier":"VirginAir",
+  "basePrice": 270.00,
+  "tax": 30.00,
+  "discount": 10,
+  "departureAirportName": "LHR",
+  "arrivalAirportName": "MIA",
+  "outboundDateTime": 34534535,
+  "inboundDateTime": 343534543
+}

@@ -30,7 +30,6 @@ public class CrazyAirTransformer {
 
         DeblockResponse dResp = new DeblockResponse();
 
-        //Comment on this... bad!
         Date depDate = Date.from(caResp.getDepartureDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date arrDate = Date.from(caResp.getArrivalDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
 

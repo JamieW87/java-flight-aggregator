@@ -30,10 +30,11 @@ public class ToughJetTransformer {
         DeblockResponse dResp = new DeblockResponse();
 
         //Assuming discount percentage is supplied by toughjet as a whole integer ( 10% would be 10)
-        int discount = tjResp.getDiscount() / 100;
+        System.out.println(tjResp.getDiscount());
+        float discount = tjResp.getDiscount() / 100;
         float fare = tjResp.getBasePrice() + tjResp.getTax();
         if (discount != 0) {
-            fare = fare - discount * fare;
+            fare = fare - (discount * fare);
         }
 
         Date departure = new Date(tjResp.getOutboundDateTime().toEpochMilli());

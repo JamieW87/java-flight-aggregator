@@ -23,51 +23,11 @@ public class DeblocksFlightsService {
 
         List<DeblockResponse> responseList = new ArrayList<>();
 
-//        supplierServices.forEach(svc -> {
-//            DeblockResponse resp = svc.GetFlightData(deblockRequest);
-//            responseList.add(resp);
-//        });
-
         supplierServices.parallelStream().forEach(svc -> {
             DeblockResponse resp = svc.GetFlightData(deblockRequest);
             responseList.add(resp);
         });
 
-
-
         return responseList.toArray(new DeblockResponse[responseList.size()]);
-
     }
 }
-
-
-//@Service
-//public class DeblocksFlightsService {
-//
-//    private final SupplierService CAService;
-//    private final SupplierService TJService;
-//
-//
-//
-//    @Autowired
-//    public DeblocksFlightsService(@Qualifier("crazyair") SupplierService caService,
-//                                  @Qualifier("toughjet") SupplierService tjService) {
-//        this.CAService = caService;
-//        this.TJService = tjService;
-//    }
-//
-//    public DeblockResponse[] FetchFlightData(DeblockRequest deblockRequest) {
-//
-//        List<DeblockResponse> responseList = new ArrayList<>();
-//
-//        DeblockResponse caResponse = CAService.GetFlightData(deblockRequest);
-//        DeblockResponse tjResponse = TJService.GetFlightData(deblockRequest);
-//
-//
-//        responseList.add(caResponse);
-//        responseList.add(tjResponse);
-//
-//        return responseList.toArray(new DeblockResponse[responseList.size()]);
-//
-//    }
-//}

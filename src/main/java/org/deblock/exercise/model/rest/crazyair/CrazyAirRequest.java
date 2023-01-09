@@ -1,7 +1,6 @@
 package org.deblock.exercise.model.rest.crazyair;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
