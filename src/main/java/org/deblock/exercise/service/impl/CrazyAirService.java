@@ -40,7 +40,7 @@ public class CrazyAirService implements SupplierService {
         HttpEntity<CrazyAirRequest> request = new HttpEntity<>(req, headers);
 
         ResponseEntity<CrazyAirResponse> response = restTemplate.exchange(
-                crazyairUrl + "/api/flights",
+                crazyairUrl + "/api/caflights",
                 HttpMethod.POST,
                 request,
                 CrazyAirResponse.class

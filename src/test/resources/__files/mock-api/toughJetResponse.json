@@ -1,7 +1,10 @@
 {
   "carrier":"VirginAir",
   "basePrice": 236.24,
-  "departureDate": "2024-11-12",
-  "returnDate": "2023-12-01",
-  "numberOfPassengers":3
+  "tax": 25.60,
+  "discount": 10,
+  "departureAirportName": "LHR",
+  "arrivalAirportName": "MIA",
+  "outboundDateTime": 34534535,
+  "inboundDateTime": 343534543
 }

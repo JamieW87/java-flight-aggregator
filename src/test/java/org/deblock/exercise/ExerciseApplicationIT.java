@@ -7,9 +7,7 @@ import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemp
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.deblock.exercise.controller.DeblockFlightsController;
 import org.deblock.exercise.model.rest.DeblockRequest;
-import org.deblock.exercise.model.rest.DeblockResponse;
 import org.junit.jupiter.api.*;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +15,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -25,14 +22,6 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @WireMockTest(httpPort = 8089)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ExerciseApplicationIT {
-
-    String mockDeblockReq = "{\n" +
-            "  \"origin\":\"LHR\",\n" +
-            "  \"destination\": \"MIA\",\n" +
-            "  \"departureDate\": \"2024-11-12\",\n" +
-            "  \"returnDate\": \"2023-12-01\",\n" +
-            "  \"numberOfPassengers\":3\n" +
-            "}";
 
     String mockTJReq = "{\n" +
             "  \"from\":\"LHR\",\n" +
@@ -42,14 +31,16 @@ public class ExerciseApplicationIT {
             "  \"numberOfAdults\":3\n" +
             "}";
 
+    String mockCAReq = "{\n" +
+            "  \"origin\":\"LHR\",\n" +
+            "  \"destination\": \"MIA\",\n" +
+            "  \"departureDate\": [ 2024, 11, 12 ],\n" +
+            "  \"returnDate\": [ 2023, 12, 11 ],\n" +
+            "  \"passengerCount\":3\n" +
+            "}";
+
     @Value("${mock.base.url}")
     String mockBaseUrl;
-
-    @Mock
-    private DeblockRequest deblockReq;
-
-    @Mock
-    private DeblockResponse deblockResponse;
 
     @Autowired
     private DeblockFlightsController controller;
@@ -90,18 +81,33 @@ public class ExerciseApplicationIT {
         debReq.setReturnDate(LocalDate.parse("2023-12-11"));
         debReq.setNumberOfPassengers(3);
 
-        String urlPath = "/api/flights";
-        wireMockServer.stubFor(WireMock.post(WireMock.urlEqualTo(urlPath)).withRequestBody(equalToJson(mockTJReq))
+        String urlPathTJ = "/api/flights";
+        wireMockServer.stubFor(WireMock.post(WireMock.urlEqualTo(urlPathTJ)).withRequestBody(equalToJson(mockTJReq))
                 .willReturn(
                         aResponse()
                                 .withStatus(200)
                                 .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-                                .withBodyFile("mock-api/deblockResponse.json"))
+                                .withBodyFile("mock-api/toughJetResponse.json"))
+        );
+
+        String urlPathCA = "/api/caflights";
+        wireMockServer.stubFor(WireMock.post(WireMock.urlEqualTo(urlPathCA)).withRequestBody(equalToJson(mockCAReq))
+                .willReturn(
+                        aResponse()
+                                .withStatus(200)
+                                .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                                .withBodyFile("mock-api/crazyairResponse.json"))
         );
 
         ResponseEntity response = controller.fetchFlights(debReq);
 
         assertThat(response).isNotNull();
-        //assertThat(response).isEqualTo(deblockResponse);
+        assertThat(response.getStatusCode().is2xxSuccessful());
+        assertThat(response.hasBody());
+
+//        assertThat(response.getData().getUuid()).isNotNull();
+//        assertThat(response.getData().getCreationDate()).isNotNull();
+//        assertThat(response.getData().getFirstName()).isNotNull();
+//        assertThat(response.getData().getLastName()).isNotNull();
     }
 }

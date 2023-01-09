@@ -1,0 +1,9 @@
+{
+  "airline":"VirginAir",
+  "price": 236.24,
+  "cabinClass": "Economy",
+  "departureAirportCode": "LHR",
+  "destinationAirportCode": "MIA",
+  "departureDate": "2024-11-12",
+  "arrivalDate": "2023-12-11"
+}
