@@ -31,33 +31,33 @@ public class CrazyAirService implements SupplierService {
     @Override
     public DeblockResponse GetFlightData(DeblockRequest dRequest){
 
-        CrazyAirRequest req = transformer.toCARequest(dRequest);
-        System.out.println(req.toString());
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        HttpEntity<CrazyAirRequest> request = new HttpEntity<>(req, headers);
-
-        ResponseEntity<CrazyAirResponse> response = restTemplate.exchange(
-                crazyairUrl + "/api/flights",
-                HttpMethod.POST,
-                request,
-                CrazyAirResponse.class
-        );
-
-        if (response.getStatusCode() != HttpStatus.OK)  {
-            throw new ClientErrorException();
-        }
-        if (response.getBody() == null) {
-            throw new NoDataFoundException();
-        }
-
-        DeblockResponse dResp = transformer.toDResponse(response.getBody());
+//        CrazyAirRequest req = transformer.toCARequest(dRequest);
+//        System.out.println(req.toString());
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//
+//        HttpEntity<CrazyAirRequest> request = new HttpEntity<>(req, headers);
+//
+//        ResponseEntity<CrazyAirResponse> response = restTemplate.exchange(
+//                crazyairUrl + "/api/flights",
+//                HttpMethod.POST,
+//                request,
+//                CrazyAirResponse.class
+//        );
+//
+//        if (response.getStatusCode() != HttpStatus.OK)  {
+//            throw new ClientErrorException();
+//        }
+//        if (response.getBody() == null) {
+//            throw new NoDataFoundException();
+//        }
+//
+//        DeblockResponse dResp = transformer.toDResponse(response.getBody());
 
         //For stubbing
         //Remove this
-        //DeblockResponse dResp = new DeblockResponse();
+        DeblockResponse dResp = new DeblockResponse();
 
         return dResp;
 

@@ -23,10 +23,17 @@ public class DeblocksFlightsService {
 
         List<DeblockResponse> responseList = new ArrayList<>();
 
-        supplierServices.forEach(svc -> {
+//        supplierServices.forEach(svc -> {
+//            DeblockResponse resp = svc.GetFlightData(deblockRequest);
+//            responseList.add(resp);
+//        });
+
+        supplierServices.parallelStream().forEach(svc -> {
             DeblockResponse resp = svc.GetFlightData(deblockRequest);
             responseList.add(resp);
         });
+
+
 
         return responseList.toArray(new DeblockResponse[responseList.size()]);
 
