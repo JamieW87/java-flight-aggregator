@@ -5,7 +5,6 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.extension.responsetemplating.ResponseTemplateTransformer;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import com.github.tomakehurst.wiremock.matching.ContentPattern;
 import org.deblock.exercise.model.rest.DeblockRequest;
 import org.deblock.exercise.model.rest.DeblockResponse;
 import org.deblock.exercise.service.impl.CrazyAirService;
