@@ -105,8 +105,11 @@ public class ExerciseApplicationIT {
 
         assertThat(response.getStatusCode().is2xxSuccessful());
         assertThat(response.hasBody());
-        assertThat(arrResp[0]).hasFieldOrProperty("airline");
+        assertThat(arrResp[1]).hasFieldOrProperty("airline");
+        assertThat(arrResp[0]).hasFieldOrProperty("supplier");
         assertThat(arrResp[0].getAirline()).isEqualTo("VirginAir");
+        assertThat(arrResp.length).isEqualTo(2);
+        assertThat(arrResp[0]).hasNoNullFieldsOrProperties();
 
 
 
