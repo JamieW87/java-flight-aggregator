@@ -11,7 +11,6 @@ import java.util.List;
 @Service
 public class DeblocksFlightsService {
 
-    @Autowired
     private final List<SupplierService> supplierServices;
 
     @Autowired

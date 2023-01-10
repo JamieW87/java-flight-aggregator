@@ -33,11 +33,6 @@ public class ToughJetService implements SupplierService {
 
         ToughJetRequest req = transformer.toTJRequest(dRequest);
 
-        //Remove these
-        System.out.println(req.toString());
-        System.out.println(toughjetUrl);
-
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 

@@ -32,7 +32,6 @@ public class CrazyAirService implements SupplierService {
     public DeblockResponse GetFlightData(DeblockRequest dRequest){
 
         CrazyAirRequest req = transformer.toCARequest(dRequest);
-        System.out.println(req.toString());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -54,6 +53,5 @@ public class CrazyAirService implements SupplierService {
         }
 
         return transformer.toDResponse(response.getBody());
-
     }
 }
