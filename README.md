@@ -8,7 +8,7 @@ Run unit tests
 Run integration test  
 Run application
 
-However if you want to run these seperately, please use the gradle commands:
+However if you want to run these separately, please use the gradle commands:
 
 ```
 ./gradlew build

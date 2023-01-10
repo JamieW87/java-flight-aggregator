@@ -7,10 +7,4 @@ class ExerciseApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
-	@Test
-	void ExampleTest() {
-		System.out.println("Tests run");
-	}
-
 }
