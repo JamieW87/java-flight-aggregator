@@ -11,7 +11,7 @@ RUN chown -R gradle /home/gradle/src
 RUN gradle build || return 0
 COPY . .
 RUN gradle clean build
-    
+
 # actual container
 FROM adoptopenjdk/openjdk11:alpine-jre
 ENV ARTIFACT_NAME=pokerstats-0.0.1-SNAPSHOT.jar

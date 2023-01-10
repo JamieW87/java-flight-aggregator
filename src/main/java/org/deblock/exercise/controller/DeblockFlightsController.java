@@ -27,7 +27,9 @@ public class DeblockFlightsController {
 
         logger.debug(String.format("Passing request to suppliers: %s", deblockRequest.toString()));
         DeblockResponse[] response = service.FetchFlightData(deblockRequest);
-
+        for (DeblockResponse deblockResponse : response) {
+            logger.trace(String.format("Response bodies received: %s", deblockResponse.toString()));
+        }
         logger.info("Successfully processed request, returning response");
         return ResponseEntity.ok(response);
 
